@@ -6,9 +6,15 @@ Requirements
 ------------
 TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
-#### packages
-- `toaster` - atom needs toaster to brown your bagel.
+#### cookbook dependencies
+- `mysql ~> 6.0`
+- `database ~> 4.0.6`
+- `mysql2_chef_gem ~> 1.0.1`
+- `java ~> 1.31.0`
+- `elasticsearch ~> 0.3.13`
+- `apache2 ~> 3.0.1`
+- `php ~> 1.5.0`
+- `nodejs ~> 2.4.0`
 
 Attributes
 ----------
