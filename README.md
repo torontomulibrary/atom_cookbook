@@ -17,8 +17,8 @@ Attributes
 * `node['atom']['mysql_password']` - MySQL root password, default `password`
 * `node['atom']['database_name']` - Database name that AtoM will use, default `atom`
 * `node['atom']['database_user']` - Database user that AtoM will use, default `atom`
-* `node['atom']['database_user_password']` - Database user password that AtoM will use `atom`
-* `node['atom']['install_dir']` - Directory where AtoM will be installed on the system `/var/www/html/atom`
+* `node['atom']['database_user_password']` - Database user password that AtoM will use, default `atom`
+* `node['atom']['install_dir']` - Directory where AtoM will be installed on the system, default `/var/www/html/atom`
 
 Usage
 -----
