@@ -1,6 +1,6 @@
 atom Cookbook
 =============
-This cookbook will install AtoM.
+This cookbook will install [AtoM](https://www.accesstomemory.org/).
 
 Requirements
 ------------
