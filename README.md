@@ -13,50 +13,12 @@ e.g.
 Attributes
 ----------
 #### atom::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['atom']['mysql_version']</tt></td>
-    <td>String</td>
-    <td>Version of MySQL to install</td>
-    <td><tt>5.5</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['atom']['mysql_password']</tt></td>
-    <td>String</td>
-    <td>MySQL root password</td>
-    <td><tt>password</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['atom']['database_name']</tt></td>
-    <td>String</td>
-    <td>Database name that AtoM will use</td>
-    <td><tt>atom</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['atom']['database_user']</tt></td>
-    <td>String</td>
-    <td>Database user that AtoM will use</td>
-    <td><tt>atom</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['atom']['database_user']</tt></td>
-    <td>String</td>
-    <td>Database user password that AtoM will use</td>
-    <td><tt>atom</tt></td>
-  </tr>
-  <tr>
-    <td><tt>['atom']['database_user']</tt></td>
-    <td>String</td>
-    <td>Directory where AtoM will be installed on the system</td>
-    <td><tt>/var/www/html/atom</tt></td>
-  </tr>
-</table>
+* `node['atom']['mysql_version']` - Version of MySQL to install, default `5.5`
+* `node['atom']['mysql_password']` - MySQL root password, default `password`
+* `node['atom']['database_name']` - Database name that AtoM will use, default `atom`
+* `node['atom']['database_user']` - Database user that AtoM will use, default `atom`
+* `node['atom']['database_user_password']` - Database user password that AtoM will use `atom`
+* `node['atom']['install_dir']` - Directory where AtoM will be installed on the system `/var/www/html/atom`
 
 Usage
 -----
