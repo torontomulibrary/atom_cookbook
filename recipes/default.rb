@@ -6,6 +6,13 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe "atom::install_mysql"
+include_recipe "java"
+include_recipe "elasticsearch"
+include_recipe "apache2"
+include_recipe "php"
+include_recipe "php::module_mysql"
+include_recipe "apache2::mod_php5"
 
 # Install git, PHP-APC (required for caching), PHP-mbstring
 %w{ git php-pecl-apc php-mbstring make }.each do |pkg|
