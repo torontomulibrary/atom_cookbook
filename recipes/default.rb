@@ -15,6 +15,21 @@ include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
 
+# Install optional dependencies
+# imagemagick
+case node['platform_family']
+when 'rhel'
+  package 'ImageMagick'
+when 'debian', 'mac_os_x'
+  package 'imagemagick'
+end
+# poppler-utils, ghostscript
+%w{ poppler-utils ghostscript }.each do |pkg|
+    package pkg
+end
+# Install ffmpeg
+include_recipe "ffmpeg"
+
 # Install git, PHP-APC (required for caching), PHP-mbstring
 %w{ git php-pecl-apc php-mbstring make }.each do |pkg|
     package pkg do
