@@ -27,6 +27,7 @@ end
 %w{ poppler-utils ghostscript }.each do |pkg|
     package pkg
 end
+
 # Install ffmpeg
 include_recipe "ffmpeg"
 
