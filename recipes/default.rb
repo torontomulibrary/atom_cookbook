@@ -6,6 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+include_recipe "nodejs"
 include_recipe "atom::install_mysql"
 include_recipe "java"
 include_recipe "elasticsearch"
