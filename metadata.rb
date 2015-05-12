@@ -24,4 +24,4 @@ depends 'php', '~> 1.5.0'
 depends 'nodejs', '~> 2.4.0'
 
 # Required to install the optional dependency ffmpeg
-cookbook 'ffmpeg', '~> 0.4.4'
+depends 'ffmpeg', '~> 0.4.4'
