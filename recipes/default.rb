@@ -15,6 +15,14 @@ include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
 
+bash "add-rpmfusion" do
+    user "root"
+    group "root"
+    code <<-EOH
+        rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+    EOH
+end
+
 # Install optional dependencies
 # imagemagick
 case node['platform_family']
@@ -23,13 +31,11 @@ when 'rhel'
 when 'debian', 'mac_os_x'
   package 'imagemagick'
 end
-# poppler-utils, ghostscript
-%w{ poppler-utils ghostscript }.each do |pkg|
+# poppler-utils, ghostscript, ffmpeg
+%w{ poppler-utils ghostscript ffmpeg }.each do |pkg|
     package pkg
 end
 
-# Install ffmpeg
-include_recipe "ffmpeg"
 
 # Install git, PHP-APC (required for caching), PHP-mbstring
 %w{ git php-pecl-apc php-mbstring make }.each do |pkg|

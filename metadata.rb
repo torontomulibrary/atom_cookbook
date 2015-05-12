@@ -22,6 +22,3 @@ depends 'php', '~> 1.5.0'
 
 # Required to compile the .less files in atom/plugins/arDominionPlugin/css
 depends 'nodejs', '~> 2.4.0'
-
-# Required to install the optional dependency ffmpeg
-depends 'ffmpeg', '~> 0.4.4'
