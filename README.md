@@ -1,9 +1,6 @@
 atom Cookbook
 =============
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook will install AtoM.
 
 Requirements
 ------------
@@ -15,9 +12,6 @@ e.g.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
-
-e.g.
 #### atom::default
 <table>
   <tr>
@@ -27,10 +21,40 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['atom']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['atom']['mysql_version']</tt></td>
+    <td>String</td>
+    <td>Version of MySQL to install</td>
+    <td><tt>5.5</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['atom']['mysql_password']</tt></td>
+    <td>String</td>
+    <td>MySQL root password</td>
+    <td><tt>password</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['atom']['database_name']</tt></td>
+    <td>String</td>
+    <td>Database name that AtoM will use</td>
+    <td><tt>atom</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['atom']['database_user']</tt></td>
+    <td>String</td>
+    <td>Database user that AtoM will use</td>
+    <td><tt>atom</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['atom']['database_user']</tt></td>
+    <td>String</td>
+    <td>Database user password that AtoM will use</td>
+    <td><tt>atom</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['atom']['database_user']</tt></td>
+    <td>String</td>
+    <td>Directory where AtoM will be installed on the system</td>
+    <td><tt>/var/www/html/atom</tt></td>
   </tr>
 </table>
 
