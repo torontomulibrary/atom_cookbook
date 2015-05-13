@@ -18,7 +18,8 @@ end
 include_recipe "atom::configure_mysql"
 include_recipe "apache2"
 include_recipe "php"
-include_recipe "php::module_mysql"
+# TODO: php::module_mysql is deprecated, use php_pear to install
+include_recipe "php::module_mysql" 
 
 php_pear "imagick" do 
     action :install
