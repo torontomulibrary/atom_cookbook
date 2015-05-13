@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: atom
-# Recipe:: install_mysql
+# Recipe:: configure_mysql
 #
 # Copyright 2015, YOUR_COMPANY_NAME
 #
@@ -32,13 +32,13 @@ end
 
 # Create database user 'atom' and grant all priveleges
 mysql_connection_info = {
-	:host => '127.0.0.1',
-	:username => 'root',
-	:password => node['atom']['mysql_password']
+  :host => '127.0.0.1',
+  :username => 'root',
+  :password => node['atom']['mysql_password']
 }
 mysql_database_user "#{node['atom']['database_user']}" do
-	connection mysql_connection_info
-	password "#{node['atom']['database_user_password']}"
-	database_name "#{node['atom']['database_name']}"
-	action :grant
+  connection mysql_connection_info
+  password "#{node['atom']['database_user_password']}"
+  database_name "#{node['atom']['database_name']}"
+  action :grant
 end
