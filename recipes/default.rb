@@ -15,13 +15,15 @@ include_recipe "php"
 include_recipe "php::module_mysql"
 include_recipe "apache2::mod_php5"
 
-bash "add-rpmfusion" do
-    user "root"
-    group "root"
-    code <<-EOH
-        rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
-    EOH
+# Add RPM Fusion (Fedora20)
+remote_file "#{Chef::Config[:file_cache_path]}/rpmfusion-free-release-20.noarch.rpm" do
+    source 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-20.noarch.rpm'
 end
+remote_file "#{Chef::Config[:file_cache_path]}/rpmfusion-nonfree-release-20.noarch.rpm" do
+    source 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-20.noarch.rpm'
+end
+rpm_package "#{Chef::Config[:file_cache_path]}/rpmfusion-free-release-20.noarch.rpm"
+rpm_package "#{Chef::Config[:file_cache_path]}/rpmfusion-nonfree-release-20.noarch.rpm"
 
 # Install optional dependencies
 # imagemagick
@@ -36,26 +38,22 @@ end
     package pkg
 end
 
-
-# Install git, PHP-APC (required for caching), PHP-mbstring
-%w{ git php-pecl-apc php-mbstring make }.each do |pkg|
-    package pkg do
-        action :install
-        notifies :reload, 'service[apache2]', :delayed
-    end
-end
+# install git so we can pull down atom from a repository
+package 'git'
 
 # Create and enable our custom site.
 web_app 'atom' do
     template 'atom.conf.erb'
 end
 
+# Create the directory where we will install atom
 directory "#{node['atom']['install_dir']}" do
     mode '0755'
     owner 'apache'
     group 'apache'
 end
 
+# Clone the AtoM repository
 git "#{node['atom']['install_dir']}" do
     repository "git://github.com/newbkaek/atom.git"
     revision "RULA/2.1.x" 

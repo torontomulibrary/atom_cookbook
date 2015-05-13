@@ -17,3 +17,5 @@ default['nodejs']['npm_packages'] = [
 	{ "name" => "less" },
 	{ "name" => "gulp" },
 ]
+
+default['php']['packages'] = %w{ php-pecl-apc php-mbstring }
