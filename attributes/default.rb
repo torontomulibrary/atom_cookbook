@@ -28,6 +28,9 @@ default['nodejs']['npm_packages'] = [
 	{ "name" => "gulp" },
 ]
 
+# TODO: make sure that these packages install properly on all platforms
+# 		php-pecl-apc works on Fedora20, but I'm not sure if it will work
+# 		on other platform families
 default['php']['packages'] += %w{ php-pecl-apc php-mbstring }
 
 default['apache']['default_modules'] += %w{ php5 }
