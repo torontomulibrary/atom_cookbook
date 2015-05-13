@@ -11,17 +11,23 @@ if platform_family?('rhel', 'centos', 'fedora')
     include_recipe "atom::add_rpm_fusion"
 end
 
+node['atom']['packages'].each do |pkg|
+    package pkg
+end
+
 include_recipe "atom::configure_mysql"
 include_recipe "apache2"
 include_recipe "php"
 include_recipe "php::module_mysql"
+
+php_pear "imagick" do 
+    action :install
+end
+
 include_recipe "java"
 include_recipe "elasticsearch"
 include_recipe "nodejs"
 
-node['atom']['packages'].each do |pkg|
-    package pkg
-end
 
 # Create and enable our custom site.
 web_app 'atom' do

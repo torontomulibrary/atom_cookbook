@@ -9,8 +9,8 @@ default['atom']['git_revision'] = 'stable/2.1.x'
 
 default['atom']['packages'] = %w{ poppler-utils ghostscript ffmpeg git }
 case node['platform_family']
-when 'rhel'
-	default['atom']['packages'] += 'ImageMagick'
+when 'rhel', 'fedora'
+	default['atom']['packages'] += %w{ ImageMagick ImageMagick-devel }
 when 'debian', 'mac_os_x'
 	default['atom']['packages'] += 'imagemagick'
 end
