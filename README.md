@@ -4,7 +4,7 @@ This cookbook will install [AtoM](https://www.accesstomemory.org/).
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+This cookbook has only been tested on Fedora 20
 
 #### cookbook dependencies
 - `mysql ~> 6.0`
@@ -25,13 +25,13 @@ Attributes
 * `node['atom']['database_user']` - Database user that AtoM will use, default `atom`
 * `node['atom']['database_user_password']` - Database user password that AtoM will use, default `atom`
 * `node['atom']['install_dir']` - Directory where AtoM will be installed on the system, default `/var/www/html/atom`
+* `node['atom']['git_repo']` - Git repository where the cookbook will download AtoM from, default `git://github.com/artefactual/atom.git`
+* `node['atom']['git_revision']` - Branch of AtoM that will be checked out, default `stable/2.1.x`
 
 Usage
 -----
 #### atom::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
 Just include `atom` in your node's `run_list`:
 
 ```json
@@ -57,4 +57,4 @@ e.g.
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: Patrick Fung (<patrick@makestuffdostuff.com>)
