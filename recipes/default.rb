@@ -18,8 +18,16 @@ end
 include_recipe "atom::configure_mysql"
 include_recipe "apache2"
 include_recipe "php"
-# TODO: php::module_mysql is deprecated, use php_pear to install
-include_recipe "php::module_mysql" 
+
+php_mysql_package_name = value_for_platform(
+  %w(centos redhat scientific fedora amazon oracle) => {
+    el5_range => 'php53-mysql',
+    'default' => 'php-mysql'
+  },
+  'default' => 'php5-mysql'
+)
+
+package php_mysql_package_name
 
 php_pear "imagick" do 
     action :install
