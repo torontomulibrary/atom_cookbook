@@ -43,6 +43,16 @@ Just include `atom` in your node's `run_list`:
 }
 ```
 
+If you did not change the configuration, this is how you should fill in the fields on the web installer
+* Database name: atom
+* Database username: atom
+* Database password: atom
+* Database host: 127.0.0.1
+* Database port: 3306
+* Search host: 127.0.0.1
+* Search port: 9200
+* Search index: atom
+
 Contributing
 ------------
 TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
