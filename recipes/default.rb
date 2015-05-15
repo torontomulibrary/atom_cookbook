@@ -60,7 +60,9 @@ end
 
 # add the uploads directory so the first upload does not bug out!
 directory "#{node['atom']['install_dir']}/uploads" do
-  creates "#{node['atom']['install_dir']}/uploads"
+  mode "0755"
+  user "apache"
+  group "apache"
 end
 
 bash "compile-atom-css" do
