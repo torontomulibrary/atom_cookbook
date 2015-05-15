@@ -68,3 +68,8 @@ bash "compile-atom-css" do
         chown apache:apache css/main.css
     EOH
 end
+
+cookbook_file "php.ini" do
+    path "/etc/php.ini"
+    notifies :restart, 'service[apache2]', :delayed
+end
