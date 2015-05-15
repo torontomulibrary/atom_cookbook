@@ -29,7 +29,7 @@ php_mysql_package_name = value_for_platform(
 
 package php_mysql_package_name
 
-php_pear "imagick" do 
+php_pear "imagick" do
     action :install
 end
 
@@ -56,6 +56,11 @@ git "#{node['atom']['install_dir']}" do
     revision node['atom']['git_revision']
     user "apache"
     group "apache"
+end
+
+# add the uploads directory so the first upload does not bug out!
+directory "#{node['atom']['install_dir']}/uploads" do
+  creates "#{node['atom']['install_dir']}/uploads"
 end
 
 bash "compile-atom-css" do
