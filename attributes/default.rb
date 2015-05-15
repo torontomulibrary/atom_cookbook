@@ -43,4 +43,5 @@ php_mysql_package = value_for_platform(
 )
 default['php']['packages'] += [ php_mysql_package ]
 
+# enable php in apache
 default['apache']['default_modules'] += %w{ php5 }
