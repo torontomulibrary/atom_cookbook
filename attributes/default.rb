@@ -21,7 +21,7 @@ end
 default['elasticsearch']['version'] = '1.3.0'
 
 # Elasticsearch requires Java
-default['java']['install_flavor'] = 'openjdk' 
+default['java']['install_flavor'] = 'openjdk'
 default['java']['jdk_version'] = '7'
 
 # less and gulp are required to compile the .less files
@@ -41,6 +41,6 @@ php_mysql_package = value_for_platform(
   },
   'default' => 'php5-mysql'
 )
-default['php']['mysql'] += [ php_mysql_package ]
+default['php']['packages'] += [ php_mysql_package ]
 
 default['apache']['default_modules'] += %w{ php5 }
