@@ -7,67 +7,69 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# Install RPM Fusion if OS is RHEL/Fedora
-if platform_family?('rhel', 'fedora')
-    include_recipe "atom::add_rpm_fusion"
-end
-
-# install dependency packages
-node['atom']['packages'].each do |pkg|
-    package pkg
-end
-
+# MySQL
 include_recipe "atom::configure_mysql"
-include_recipe "apache2"
 
-include_recipe "php"
-php_pear "imagick"
-
+# Java & Elasticsearch
 include_recipe "java"
 include_recipe "elasticsearch"
+
+# Nginx
+include_recipe "nginx"
+
+template "/etc/nginx/sites-available/atom" do
+  source "atom.nginx.erb"
+  notifies :reload, 'service[nginx]', :delayed
+end
+nginx_site "atom"
+
+# PHP
+include_recipe "atom::install_php"
+
+template "/etc/php-fpm.d/atom.conf" do
+  source "atom.php-fpm.erb"
+  notifies :reload, 'service[php-fpm]', :delayed
+end
+
+# Additional Dependencies
+include_recipe "atom::add_rpm_fusion"
+addtional_packages = %w{
+  ImageMagick ImageMagick-devel ghostscript poppler-utils ffmpeg
+}
+addtional_packages.each do |install|
+  package install
+end
+
+# Clone down AtoM
+package 'git'
 include_recipe "nodejs"
 
-# Create and enable our custom site using the apache2 web_app resource
-web_app 'atom' do
-    template 'atom.conf.erb'
-end
-
-# Create the directory where we will install atom
 directory "#{node['atom']['install_dir']}" do
-    mode '0755'
-    owner 'apache'
-    group 'apache'
+  mode '0755'
+  owner 'nginx'
+  group 'nginx'
 end
 
-# Clone the AtoM repository
 git "#{node['atom']['install_dir']}" do
-    repository node['atom']['git_repo']
-    revision node['atom']['git_revision']
-    user "apache"
-    group "apache"
+  repository node['atom']['git_repo']
+  revision node['atom']['git_revision']
+  user "nginx"
+  group "nginx"
 end
 
-# add the uploads directory so the first upload does not bug out!
+bash "compile-atom-css" do
+  cwd "#{node['atom']['install_dir']}/plugins/arDominionPlugin"
+  user "root"
+  group "root"
+  code <<-EOH
+  npm install
+  gulp
+  chown nginx:nginx css/main.css
+  EOH
+end
+
 directory "#{node['atom']['install_dir']}/uploads" do
   mode "0755"
-  user "apache"
-  group "apache"
-end
-
-# compile the css for AtoM
-bash "compile-atom-css" do
-    cwd "#{node['atom']['install_dir']}/plugins/arDominionPlugin"
-    user "root"
-    group "root"
-    code <<-EOH
-        npm install
-        gulp
-        chown apache:apache css/main.css
-    EOH
-end
-
-# inject our php.ini file, because we want larger uploads!
-cookbook_file "php.ini" do
-    path "/etc/php.ini"
-    notifies :restart, 'service[apache2]', :delayed
+  user "nginx"
+  group "nginx"
 end
