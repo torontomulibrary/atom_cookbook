@@ -7,6 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "atom::add_rpm_fusion"
+node['atom']['install_packages'].each do |install|
+  package install
+end
+
 # MySQL
 include_recipe "atom::configure_mysql"
 
@@ -29,15 +34,6 @@ include_recipe "atom::install_php"
 template "/etc/php-fpm.d/atom.conf" do
   source "atom.php-fpm.erb"
   notifies :reload, 'service[php-fpm]', :delayed
-end
-
-# Additional Dependencies
-include_recipe "atom::add_rpm_fusion"
-addtional_packages = %w{
-  ImageMagick ImageMagick-devel ghostscript poppler-utils ffmpeg
-}
-addtional_packages.each do |install|
-  package install
 end
 
 # Clone down AtoM

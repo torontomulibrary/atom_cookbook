@@ -13,19 +13,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/webtatic.rpm" do
 end
 rpm_package "#{Chef::Config[:file_cache_path]}/webtatic.rpm"
 
-php_packages = %w{
-  php56w 
-  php56w-opcache
-  php56w-common 
-  php56w-mysql 
-  php56w-xml 
-  php56w-ldap 
-  php56w-pecl-apcu 
-  php56w-mbstring
-  php56w-fpm 
-}
-
-php_packages.each do |install|
+node['atom']['php_packages'].each do |install|
   package install
 end
 
