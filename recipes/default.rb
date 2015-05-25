@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "atom::add_rpm_fusion"
+include_recipe "atom::add_yum_repositories"
 node['atom']['install_packages'].each do |install|
   package install
 end
@@ -66,6 +66,23 @@ end
 
 directory "#{node['atom']['install_dir']}/uploads" do
   mode "0755"
+  user "nginx"
+  group "nginx"
+end
+
+# Pre-fill the web installer form with defaults
+template "#{node['atom']['install_dir']}/plugins/sfInstallPlugin/modules/sfInstallPlugin/actions/configureSearchAction.class.php" do
+  source "configureSearchAction.class.php"
+  user "nginx"
+  group "nginx"
+end
+template "#{node['atom']['install_dir']}/plugins/sfInstallPlugin/modules/sfInstallPlugin/actions/configureDatabaseAction.class.php" do
+  source "configureDatabaseAction.class.php"
+  user "nginx"
+  group "nginx"
+end
+template "#{node['atom']['install_dir']}/plugins/sfInstallPlugin/modules/sfInstallPlugin/actions/configureSiteAction.class.php" do
+  source "configureSiteAction.class.php"
   user "nginx"
   group "nginx"
 end

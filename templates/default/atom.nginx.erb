@@ -37,7 +37,7 @@ server {
   # This is the most important part, as here we are redirecting some specific
   # requests to PHP-FPM so PHP can do its job passing data to and from the
   # web server.
-  location ~ ^/(index|qubit_dev)\.php(/|$) {
+  location ~ ^/(index|qubit_dev|phpinfo)\.php(/|$) {
     include /etc/nginx/fastcgi_params;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     fastcgi_split_path_info ^(.+\.php)(/.*)$;

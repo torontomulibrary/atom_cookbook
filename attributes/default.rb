@@ -27,13 +27,14 @@ default['atom']['php_packages'] =  %w{ php56w php56w-opcache php56w-common php56
 default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'
 default['java']['oracle']['accept_oracle_download_terms'] = true
+# default['elasticsearch']['user'] = 'nginx'
 
 # AtoM requires Elasticsearch version ~> 1.3.0
 default['elasticsearch']['version'] = '1.3.0'
 
 # Nginx
 default['nginx']['default_site_enabled'] = false
-default['nginx']['repo_source'] = 'nginx'
+# default['nginx']['repo_source'] = 'nginx'
 
 # less and gulp are required to compile the .less files
 default['nodejs']['npm_packages'] = [
