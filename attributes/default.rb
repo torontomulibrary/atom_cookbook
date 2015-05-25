@@ -21,13 +21,13 @@ default['atom']['install_packages'] = %w{
   ffmpeg
 }
 
+# Package names from Webtatic! Will only work on RHEL/Centos
 default['atom']['php_packages'] =  %w{ php56w php56w-opcache php56w-common php56w-mysql php56w-xml php56w-ldap php56w-pecl-apcu php56w-mbstring php56w-fpm }
 
 # Elasticsearch requires Java
 default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'
 default['java']['oracle']['accept_oracle_download_terms'] = true
-# default['elasticsearch']['user'] = 'nginx'
 
 # AtoM requires Elasticsearch version ~> 1.3.0
 default['elasticsearch']['version'] = '1.3.0'
