@@ -17,7 +17,5 @@ depends 'mysql2_chef_gem', '~> 1.0.1'
 depends 'java', '~> 1.31.0'
 depends 'elasticsearch', '~> 0.3.13'
 
-# Required to compile the .less files in atom/plugins/arDominionPlugin/css
-depends 'nodejs', '~> 2.4.0'
-
+# Nginx
 depends 'nginx', '~> 2.7.6'
