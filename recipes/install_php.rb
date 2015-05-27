@@ -7,6 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# This recipe is specific to CentOS!
 case node['platform_version'].to_i
 when 5
   webtatic_source_url = 'http://mirror.webtatic.com/yum/el5/latest.rpm'
