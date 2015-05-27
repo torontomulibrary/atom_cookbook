@@ -13,15 +13,13 @@ default['atom']['git_revision'] = 'stable/2.1.x'
 
 # ImageMagick package name is different on debian/ubuntu
 default['atom']['install_packages'] = %w{
-  git
   ImageMagick
   ImageMagick-devel
   ghostscript
   poppler-utils
-  ffmpeg
 }
 
-# Package names from Webtatic! Will only work on RHEL/Centos
+# Package names from Webtatic! Will only work on RHEL/Centos6
 default['atom']['php_packages'] =  %w{ php56w php56w-opcache php56w-common php56w-mysql php56w-xml php56w-ldap php56w-pecl-apcu php56w-mbstring php56w-fpm }
 
 # Elasticsearch requires Java
