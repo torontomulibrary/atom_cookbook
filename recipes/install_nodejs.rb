@@ -10,6 +10,7 @@
 if node['platform_family'] == 'rhel'
   platform_version = node['platform_version'].to_i
 
+  # do we need this condition, can we just use 'run-node-setup' for all platform versions?
   if platform_version > 5
     package 'nodejs'
     package 'npm'

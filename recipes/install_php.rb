@@ -10,7 +10,7 @@
 case node['platform_version'].to_i
 when 5
   webtatic_source_url = 'http://mirror.webtatic.com/yum/el5/latest.rpm'
-when 6, 2013, 2014, 2015
+when 6
   webtatic_source_url = 'https://mirror.webtatic.com/yum/el6/latest.rpm'
 when 7
   webtatic_source_url = 'https://mirror.webtatic.com/yum/el7/webtatic-release.rpm'
