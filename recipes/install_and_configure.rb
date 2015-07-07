@@ -17,14 +17,14 @@ end
 git "#{node['atom']['install_dir']}" do
   repository node['atom']['git_repo']
   revision node['atom']['git_revision']
-  user "nginx"
-  group "nginx"
+  user 'nginx'
+  group 'nginx'
 end
 
-bash "compile-atom-css" do
+bash 'compile-atom-css' do
   cwd "#{node['atom']['install_dir']}/plugins/arDominionPlugin"
-  user "root"
-  group "root"
+  user 'root'
+  group 'root'
   code <<-EOH
   npm install
   gulp
@@ -33,7 +33,7 @@ bash "compile-atom-css" do
 end
 
 directory "#{node['atom']['install_dir']}/uploads" do
-  mode "0755"
-  user "nginx"
-  group "nginx"
+  mode '0755'
+  user 'nginx'
+  group 'nginx'
 end

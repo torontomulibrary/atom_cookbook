@@ -16,25 +16,25 @@ mysql_service 'mysqld' do
 end
 
 # Install mysql2_chef_gem to set up databases
-mysql2_chef_gem 'default' do 
+mysql2_chef_gem 'default' do
   action :install
 end
 
 # Set up AtoM database
 mysql_database "#{node['atom']['database_name']}" do
   connection(
-    :host => '127.0.0.1',
-    :username => 'root',
-    :socket => '/var/run/mysql-mysqld/mysqld.sock',
-    :password => node['atom']['mysql_password']
-    )
+    host: '127.0.0.1',
+    username: 'root',
+    socket: '/var/run/mysql-mysqld/mysqld.sock',
+    password: node['atom']['mysql_password']
+  )
 end
 
 # Create database user 'atom' and grant all priveleges
 mysql_connection_info = {
-  :host => '127.0.0.1',
-  :username => 'root',
-  :password => node['atom']['mysql_password']
+  host: '127.0.0.1',
+  username: 'root',
+  password: node['atom']['mysql_password']
 }
 mysql_database_user "#{node['atom']['database_user']}" do
   connection mysql_connection_info

@@ -25,13 +25,13 @@ yum_repository 'rpmforge' do
   gpgkey 'http://apt.sw.be/RPM-GPG-KEY.dag.txt'
 end
 
-atom_dependency_packages = %w{
+atom_dependency_packages = %w(
   ImageMagick
   ImageMagick-devel
   ghostscript
   poppler-utils
   ffmpeg
-}
+)
 atom_dependency_packages.each do |install|
   package install
 end

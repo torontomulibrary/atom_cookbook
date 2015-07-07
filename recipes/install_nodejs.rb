@@ -10,21 +10,22 @@
 if node['platform_family'] == 'rhel'
   platform_version = node['platform_version'].to_i
 
-  # do we need this condition, can we just use 'run-node-setup' for all platform versions?
+  # do we need this condition, can we just use 'run-node-setup' for all
+  # platform versions?
   if platform_version > 5
     package 'nodejs'
     package 'npm'
-  elsif 
-    bash "run-node-setup" do
-      user "root"
-      group "root"
-      code "curl -sL https://rpm.nodesource.com/setup | bash -"
-      not_if "which nodejs"
+  else
+    bash 'run-node-setup' do
+      user 'root'
+      group 'root'
+      code 'curl -sL https://rpm.nodesource.com/setup | bash -'
+      not_if 'which nodejs'
     end
     package 'nodejs'
   end
 end
 
-execute "install NPM package" do
-  command "npm install -g less gulp"
+execute 'install NPM package' do
+  command 'npm install -g less gulp'
 end

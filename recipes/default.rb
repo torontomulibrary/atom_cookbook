@@ -8,11 +8,9 @@
 #
 
 # Install EPEL repositories
-if node['platform_family'] == 'rhel'
-  package 'epel-release'
-end
+package 'epel-release' if node['platform_family'] == 'rhel'
 
-%w{ curl git }.each do |install|
+%w(curl git) .each do |install|
   package install
 end
 
@@ -20,20 +18,20 @@ end
 include_recipe 'atom::install_nodejs'
 
 # MySQL
-include_recipe "atom::configure_mysql"
+include_recipe 'atom::configure_mysql'
 
 # Java & Elasticsearch
-include_recipe "java"
-include_recipe "elasticsearch"
+include_recipe 'java'
+include_recipe 'elasticsearch'
 
 # Nginx
-include_recipe "atom::install_nginx"
+include_recipe 'atom::install_nginx'
 
 # PHP
-include_recipe "atom::install_php"
+include_recipe 'atom::install_php'
 
 # Atom Additional Dependencies
-include_recipe "atom::install_atom_dependencies"
+include_recipe 'atom::install_atom_dependencies'
 
 # Install and configure AtoM
-include_recipe "atom::install_and_configure"
+include_recipe 'atom::install_and_configure'
