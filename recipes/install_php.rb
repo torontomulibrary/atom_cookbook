@@ -35,6 +35,11 @@ service 'php-fpm' do
   action [:enable, :start]
 end
 
+template '/etc/php.ini' do
+  source 'php.ini.erb'
+  notifies :reload, 'service[php-fpm]', :delayed
+end
+
 template '/etc/php-fpm.d/atom.conf' do
   source 'atom.php-fpm.erb'
   notifies :reload, 'service[php-fpm]', :delayed
