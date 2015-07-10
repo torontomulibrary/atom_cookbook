@@ -28,6 +28,8 @@ mysql_database "#{node['atom']['database_name']}" do
     socket: '/var/run/mysql-mysqld/mysqld.sock',
     password: node['atom']['mysql_password']
   )
+  encoding 'utf8'
+  collation 'utf8_unicode_ci'
 end
 
 # Create database user 'atom' and grant all priveleges
