@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: atom
-# Recipe:: install_php
+# Recipe:: configure_php
 #
 # Copyright 2015, YOUR_COMPANY_NAME
 #
