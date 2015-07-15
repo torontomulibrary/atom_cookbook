@@ -10,6 +10,36 @@ default['atom']['git_revision'] = 'stable/2.1.x'
 # should not change anything below this line unless you really
 # know what you are doing!
 
+# additional repositories for AtoM
+default['atom']['additional_repos'] = {
+  rpmforge: 'http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm',
+  webtatic: 'https://mirror.webtatic.com/yum/el6/latest.rpm'
+}
+
+# PHP packages needed for AtoM
+default['atom']['php_packages'] = %w(
+  php55w
+  php55w-common
+  php55w-fpm
+  php55w-ldap
+  php55w-mbstring
+  php55w-mysql
+  php55w-opcache
+  php55w-pecl-apcu
+  php55w-xml
+)
+
+# Optional packages for AtoM
+default['atom']['optional_packages'] = %w(
+  ffmpeg
+  gearmand
+  ghostscript
+  ImageMagick
+  ImageMagick-devel
+  memcached
+  poppler-utils
+)
+
 # Elasticsearch requires Java
 default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'

@@ -7,8 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-mysql_service 'mysqld' do
-  port '3306'
+# Create and start MySQL instance for AtoM
+mysql_service "#{node['atom']['database_name']}" do
   bind_address '127.0.0.1'
   version "#{node['atom']['mysql_version']}"
   initial_root_password "#{node['atom']['mysql_password']}"
@@ -16,18 +16,18 @@ mysql_service 'mysqld' do
 end
 
 # Install mysql2_chef_gem to set up databases
-mysql2_chef_gem 'default' do
-  action :install
-end
+mysql2_chef_gem 'default'
 
 # Set up AtoM database
 mysql_database "#{node['atom']['database_name']}" do
   connection(
     host: '127.0.0.1',
     username: 'root',
-    socket: '/var/run/mysql-mysqld/mysqld.sock',
+    socket: "/var/run/mysql-#{node['atom']['database_name']}/mysqld.sock",
     password: node['atom']['mysql_password']
   )
+  encoding 'utf8'
+  collation 'utf8_unicode_ci'
 end
 
 # Create database user 'atom' and grant all priveleges

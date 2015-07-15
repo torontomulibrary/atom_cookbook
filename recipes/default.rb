@@ -7,31 +7,28 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# Install EPEL repositories
-package 'epel-release' if node['platform_family'] == 'rhel'
+# Install AtoM Dependencies
+include_recipe 'atom::install_dependencies'
 
-%w(curl git) .each do |install|
-  package install
+# Create directory for AtoM
+directory "#{node['atom']['install_dir']}"
+
+# Clone down AtoM
+git "#{node['atom']['install_dir']}" do
+  repository node['atom']['git_repo']
+  revision node['atom']['git_revision']
 end
 
-# Node.js
-include_recipe 'atom::install_nodejs'
+# Compile AtoM less
+execute 'compile-atom-css' do
+  cwd "#{node['atom']['install_dir']}/plugins/arDominionPlugin"
+  command 'npm install && gulp'
+end
 
-# MySQL
-include_recipe 'atom::configure_mysql'
+# Create uploads folder
+directory "#{node['atom']['install_dir']}/uploads"
 
-# Java & Elasticsearch
-include_recipe 'java'
-include_recipe 'elasticsearch'
-
-# Nginx
-include_recipe 'atom::install_nginx'
-
-# PHP
-include_recipe 'atom::install_php'
-
-# Atom Additional Dependencies
-include_recipe 'atom::install_atom_dependencies'
-
-# Install and configure AtoM
-include_recipe 'atom::install_and_configure'
+# Change owner to nginx:nginx
+execute 'chown-nginx' do
+  command 'chown -R nginx:nginx /var/www/html/atom'
+end
