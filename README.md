@@ -7,7 +7,7 @@ Requirements
 This cookbook has only been tested on Centos 5.x, Centos 6.x
 
 #### cookbook dependencies
-- `mysql ~> 6.0`
+- `mysql ~> 6.0.31`
 - `database ~> 4.0.6`
 - `mysql2_chef_gem ~> 1.0.1`
 - `java ~> 1.31.0`
@@ -25,7 +25,7 @@ Attributes
 * `node['atom']['database_user_password']` - Database user password that AtoM will use, default `atom`
 * `node['atom']['install_dir']` - Directory where AtoM will be installed on the system, default `/var/www/html/atom`
 * `node['atom']['git_repo']` - Git repository where the cookbook will download AtoM from, default `git://github.com/artefactual/atom.git`
-* `node['atom']['git_revision']` - Branch of AtoM that will be checked out, default `stable/2.1.x`
+* `node['atom']['git_revision']` - Branch of AtoM that will be checked out, default `stable/2.1.2`
 
 Usage
 -----
@@ -46,9 +46,9 @@ If you did not change the configuration, this is how you should fill in the fiel
 * Database name: atom
 * Database username: atom
 * Database password: atom
-* Database host: 127.0.0.1
+* Database host: localhost
 * Database port: 3306
-* Search host: 127.0.0.1
+* Search host: localhost
 * Search port: 9200
 * Search index: atom
 
