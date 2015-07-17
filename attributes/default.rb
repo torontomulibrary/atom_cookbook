@@ -6,6 +6,7 @@ default['atom']['database_user_password'] = 'atom'
 default['atom']['install_dir'] = '/var/www/html/atom'
 default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
 default['atom']['git_revision'] = 'stable/2.2.x'
+default['atom']['install_optional_packages'] = false
 
 # should not change anything below this line unless you really
 # know what you are doing!
@@ -32,7 +33,6 @@ default['atom']['php_packages'] = %w(
 # Optional packages for AtoM
 default['atom']['optional_packages'] = %w(
   ffmpeg
-  gearmand
   ghostscript
   ImageMagick
   ImageMagick-devel
