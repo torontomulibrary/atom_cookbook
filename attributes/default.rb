@@ -14,8 +14,6 @@ default['atom']['install_optional_packages'] = false
 # additional repositories for AtoM
 default['atom']['additional_repos'] = {
   rpmforge: 'http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm',
-#  epel: 'https://mirror.webtatic.com/yum/el7/epel-release.rpm',
-#  webtatic: 'https://mirror.webtatic.com/yum/el7/webtatic-release.rpm'
 }
 
 # PHP packages needed for AtoM

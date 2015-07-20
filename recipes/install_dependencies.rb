@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-#include_recipe 'atom::install_additional_repositories'
-
 # Install package dependencies
 package 'epel-release'
 package %w(gearmand curl git)
