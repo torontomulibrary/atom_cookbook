@@ -7,13 +7,24 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe 'atom::install_additional_repositories'
+#include_recipe 'atom::install_additional_repositories'
 
 # Install package dependencies
-package %w(epel-release curl git gearmand)
+package 'epel-release'
+package %w(gearmand curl git)
 
-# fop is optional, but it fudges with Java1.8, so we install it beforehand
-package 'fop' if node['atom']['install_optional_packages']
+# Install optional packages & dependencies
+if node['atom']['install_optional_packages']
+  
+  node['atom']['additional_repos'].each do |repo, url|
+    remote_file "#{Chef::Config[:file_cache_path]}/#{repo}.rpm" do
+      source url
+    end
+    rpm_package "#{Chef::Config[:file_cache_path]}/#{repo}.rpm"
+  end
+
+  package node['atom']['optional_packages']
+end
 
 # Node.js
 include_recipe 'nodejs'
@@ -32,6 +43,3 @@ end
 # MySQL, PHP
 include_recipe 'atom::configure_mysql'
 include_recipe 'atom::configure_php'
-
-# # Install optional package dependencies
-package node['atom']['optional_packages'] if node['atom']['install_optional_packages']
