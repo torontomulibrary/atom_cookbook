@@ -7,8 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# Enable extended repositories
+include_recipe 'yum-epel'
+
 # Install package dependencies
-# package 'epel-release'
 package %w(curl git gearmand)
 
 # Install optional packages & dependencies
