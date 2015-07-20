@@ -13,25 +13,28 @@ default['atom']['install_optional_packages'] = false
 
 # additional repositories for AtoM
 default['atom']['additional_repos'] = {
-  rpmforge: 'http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm',
-  webtatic: 'https://mirror.webtatic.com/yum/el6/latest.rpm'
+  rpmforge: 'http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm',
+#  epel: 'https://mirror.webtatic.com/yum/el7/epel-release.rpm',
+#  webtatic: 'https://mirror.webtatic.com/yum/el7/webtatic-release.rpm'
 }
 
 # PHP packages needed for AtoM
 default['atom']['php_packages'] = %w(
-  php55w
-  php55w-common
-  php55w-fpm
-  php55w-ldap
-  php55w-mbstring
-  php55w-mysql
-  php55w-opcache
-  php55w-pecl-apcu
-  php55w-xml
+  php
+  php-common
+  php-fpm
+  php-ldap
+  php-mbstring
+  php-mysql
+  php-opcache
+  php-pecl-apcu
+  php-pecl-gearman
+  php-xml
 )
 
 # Optional packages for AtoM
 default['atom']['optional_packages'] = %w(
+  fop
   ffmpeg
   ghostscript
   ImageMagick
