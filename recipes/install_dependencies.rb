@@ -8,8 +8,8 @@
 #
 
 # Install package dependencies
-package 'epel-release'
-package %w(gearmand curl git)
+# package 'epel-release'
+package %w(curl git gearmand)
 
 # Install optional packages & dependencies
 if node['atom']['install_optional_packages']
@@ -23,6 +23,9 @@ if node['atom']['install_optional_packages']
 
   package node['atom']['optional_packages']
 end
+
+# fop is optional, but it fudges with Java1.8, so we install it beforehand
+package 'fop' if node['atom']['install_optional_packages']
 
 # Node.js
 include_recipe 'nodejs'
