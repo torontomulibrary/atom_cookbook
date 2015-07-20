@@ -10,7 +10,7 @@
 include_recipe 'atom::install_additional_repositories'
 
 # Install package dependencies
-package %w(epel-release curl git gearmand)
+package %w(curl git gearmand)
 
 # fop is optional, but it fudges with Java1.8, so we install it beforehand
 package 'fop' if node['atom']['install_optional_packages']
