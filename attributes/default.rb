@@ -11,8 +11,8 @@ default['atom']['install_optional_packages'] = false
 # should not change anything below this line unless you really
 # know what you are doing!
 
-default['yum-epel']['repositories'] = %w{epel}
-  
+default['yum-epel']['repositories'] = %w( epel )
+
 # additional repositories for AtoM
 default['atom']['additional_repos'] = {
   rpmforge: 'http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm'

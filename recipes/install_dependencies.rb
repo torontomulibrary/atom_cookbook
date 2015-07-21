@@ -15,7 +15,7 @@ package %w(curl git gearmand)
 
 # Install optional packages & dependencies
 if node['atom']['install_optional_packages']
-  
+
   node['atom']['additional_repos'].each do |repo, url|
     remote_file "#{Chef::Config[:file_cache_path]}/#{repo}.rpm" do
       source url
