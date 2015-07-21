@@ -52,6 +52,10 @@ If you did not change the configuration, this is how you should fill in the fiel
 * Search port: 9200
 * Search index: atom
 
+Known Issues
+------------
+* ffmpeg fails to install on Centos 7.1
+
 Contributing
 ------------
 TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
@@ -66,4 +70,5 @@ e.g.
 
 License and Authors
 -------------------
-Authors: Patrick Fung (<patrick@makestuffdostuff.com>)
+* Patrick Fung (<patrick@makestuffdostuff.com>)
+* MJ Suhonos (<mjsuhonos@ryerson.ca>)
