@@ -13,6 +13,15 @@ include_recipe 'yum-epel'
 # Install package dependencies
 package %w(curl git gearmand)
 
+# Include webtatic for EL6 releases
+if platform_family?('rhel') && node['platform_version'].to_i == 6
+  webtatic_rpm = 'https://mirror.webtatic.com/yum/el6/latest.rpm'
+  remote_file "#{Chef::Config[:file_cache_path]}/webtatic.rpm" do
+    source webtatic_rpm
+  end
+  rpm_package "#{Chef::Config[:file_cache_path]}/webtatic.rpm"
+end
+
 # Install optional packages & dependencies
 if node['atom']['install_optional_packages']
 
