@@ -4,7 +4,7 @@ This cookbook will install [AtoM](https://www.accesstomemory.org/).
 
 Requirements
 ------------
-This cookbook has only been tested on Centos 6.6
+This cookbook has only been tested on Centos 6.6 and Centos 7.1
 
 #### cookbook dependencies
 - `mysql ~> 6.0.31`
