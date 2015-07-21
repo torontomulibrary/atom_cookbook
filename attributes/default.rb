@@ -71,7 +71,7 @@ default['java']['jdk_version'] = '8'
 default['java']['oracle']['accept_oracle_download_terms'] = true
 
 # AtoM requires Elasticsearch version ~> 1.3.0
-default['elasticsearch']['version'] = '1.3.0'
+default['elasticsearch']['version'] = '1.7.0'
 
 # Nginx
 default['nginx']['default_site_enabled'] = false
