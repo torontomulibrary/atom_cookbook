@@ -55,6 +55,7 @@ If you did not change the configuration, this is how you should fill in the fiel
 Known Issues
 ------------
 * ffmpeg fails to install on Centos 7.1
+* SELinux needs to be disabled when installing on RHEL. More info [here](https://github.com/skottler/selinux).
 
 Contributing
 ------------
