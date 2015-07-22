@@ -14,6 +14,7 @@ This cookbook has only been tested on Centos 6.6 and Centos 7.1
 - `elasticsearch ~> 0.3.13`
 - `apache2 ~> 3.0.1`
 - `php ~> 1.5.0`
+- `yum-epel ~> 0.6.2`
 
 Attributes
 ----------
@@ -26,6 +27,7 @@ Attributes
 * `node['atom']['install_dir']` - Directory where AtoM will be installed on the system, default `/var/www/html/atom`
 * `node['atom']['git_repo']` - Git repository where the cookbook will download AtoM from, default `git://github.com/artefactual/atom.git`
 * `node['atom']['git_revision']` - Branch of AtoM that will be checked out, default `stable/2.2.x`
+* `node['atom']['install_optional_packages'] - Whether or not to install optional packages, default `false`
 
 Usage
 -----
