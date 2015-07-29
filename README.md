@@ -24,6 +24,7 @@ Attributes
 * `node['atom']['database_name']` - Database name that AtoM will use, default `atom`
 * `node['atom']['database_user']` - Database user that AtoM will use, default `atom`
 * `node['atom']['database_user_password']` - Database user password that AtoM will use, default `atom`
+* `node['atom']['server_name']` - domain name that will accept requests, default `localhost`
 * `node['atom']['install_dir']` - Directory where AtoM will be installed on the system, default `/var/www/html/atom`
 * `node['atom']['git_repo']` - Git repository where the cookbook will download AtoM from, default `git://github.com/artefactual/atom.git`
 * `node['atom']['git_revision']` - Branch of AtoM that will be checked out, default `stable/2.2.x`

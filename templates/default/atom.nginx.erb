@@ -1,16 +1,19 @@
 upstream atom {
   server unix:/var/run/php-fpm.atom.sock;
 }
+server {
+  listen 80 default_server;
+  return 444;
+}
 
 server {
-
   listen 80;
   root <%= node['atom']['install_dir'] %>;
 
   # http://wiki.nginx.org/HttpCoreModule#server_name
   # _ means catch any, but it's better if you replace this with your server
   # name, e.g. archives.foobar.com
-  server_name _;
+  server_name <%= node['atom']['server_name'] %>;
 
   client_max_body_size 72M;
 
