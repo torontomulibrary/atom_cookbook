@@ -1,9 +1,18 @@
 upstream atom {
   server unix:/var/run/php-fpm.atom.sock;
 }
+
 server {
   listen 80 default_server;
   return 444;
+}
+
+# Proxy for Elasticsearch
+server {
+  listen 9200;
+  location / {
+    proxy_pass http://localhost:9200;
+  }
 }
 
 server {
