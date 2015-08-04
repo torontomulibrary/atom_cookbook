@@ -4,15 +4,8 @@ upstream atom {
 
 server {
   listen 80 default_server;
+  server_name _;
   return 444;
-}
-
-# Proxy for Elasticsearch
-server {
-  listen 9200;
-  location / {
-    proxy_pass http://localhost:9200;
-  }
 }
 
 server {
