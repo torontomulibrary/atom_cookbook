@@ -30,5 +30,5 @@ directory "#{node['atom']['install_dir']}/uploads"
 
 # Change owner to nginx:nginx
 execute 'chown-nginx' do
-  command 'chown -R nginx:nginx /var/www/html/atom'
+  command "chown -R nginx:nginx #{node['atom']['install_dir']}"
 end

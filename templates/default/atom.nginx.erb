@@ -2,6 +2,7 @@ upstream atom {
   server unix:/var/run/php-fpm.atom.sock;
 }
 
+# This makes nginx return an empty response to requests that come from an invalid hostname
 server {
   listen 80 default_server;
   server_name _;
