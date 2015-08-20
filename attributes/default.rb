@@ -12,6 +12,7 @@ default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
 default['atom']['git_revision'] = 'stable/2.2.x'
 default['atom']['install_optional_packages'] = false
 
+default['atom']['google_analytics_api_key'] = nil
 default['atom']['php_timezone'] = 'America/Toronto'
 
 # Don't change anything below unless you really know what you are doing!
