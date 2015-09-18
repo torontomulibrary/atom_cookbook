@@ -11,11 +11,16 @@ listen.group = nginx
 listen.mode = 0600
 
 ; The following directives should be tweaked based in your hardware resources
-pm = dynamic
-pm.max_children = 30
-pm.start_servers = 10
-pm.min_spare_servers = 10
-pm.max_spare_servers = 10
+; pm = dynamic
+pm = ondemand
+
+; pm.max_children = 30
+pm.max_children = 10
+pm.process_idle_timeout = 10s
+
+;pm.start_servers = 10
+;pm.min_spare_servers = 10
+;pm.max_spare_servers = 10
 pm.max_requests = 200
 
 chdir = /
