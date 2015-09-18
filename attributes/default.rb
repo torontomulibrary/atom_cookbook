@@ -79,6 +79,7 @@ default['java']['oracle']['accept_oracle_download_terms'] = true
 
 # AtoM requires Elasticsearch version ~> 1.3.0
 default['elasticsearch']['version'] = '1.7.0'
+default['elasticsearch']['allocated_memory'] = '512m'
 
 # Nginx
 default['nginx']['default_site_enabled'] = false
