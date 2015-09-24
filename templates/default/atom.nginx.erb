@@ -54,7 +54,7 @@ server {
 
   location ~ ^/private/(.*)$ {
     internal;
-    alias /usr/share/nginx/atom/$1;
+    alias <%= node['atom']['install_dir'] %>/$1;
   }
 
   location ~ ^/(index|qubit_dev|phpinfo)\.php(/|$) {
