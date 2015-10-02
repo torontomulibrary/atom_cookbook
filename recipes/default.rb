@@ -11,7 +11,9 @@
 include_recipe 'atom::install_dependencies'
 
 # Create directory for AtoM
-directory "#{node['atom']['install_dir']}"
+directory "#{node['atom']['install_dir']}" do
+  recursive true
+end
 
 # Clone down AtoM
 git "#{node['atom']['install_dir']}" do
