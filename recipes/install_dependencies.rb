@@ -48,6 +48,9 @@ include_recipe 'nginx'
 nginx_site 'atom' do
   template 'atom.nginx.erb'
 end
+service 'nginx' do
+  action :reload
+end
 
 # MySQL, PHP
 include_recipe 'atom::configure_mysql'
