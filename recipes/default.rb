@@ -27,10 +27,16 @@ execute 'compile-atom-css' do
   command 'npm install && gulp'
 end
 
-# Create app.yml.erb
+# Create app.yml.erb from template
 template "#{node['atom']['install_dir']}/config/app.yml" do
   source 'app.yml.erb'
 end
+
+# Create factories.yml.erb from template
+template "#{node['atom']['install_dir']}/config/factories.yml" do
+  source 'factories.yml.erb'
+end
+
 # Create uploads folder
 directory "#{node['atom']['install_dir']}/uploads"
 
