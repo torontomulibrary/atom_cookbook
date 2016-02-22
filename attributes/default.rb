@@ -15,6 +15,9 @@ default['atom']['install_optional_packages'] = false
 default['atom']['google_analytics_api_key'] = nil
 default['atom']['php_timezone'] = 'America/Toronto'
 
+# config/factories.yml
+default['atom']['config']['factories']['user_timeout'] = 1800
+
 # Don't change anything below unless you really know what you are doing!
 default['yum-epel']['repositories'] = %w( epel )
 
