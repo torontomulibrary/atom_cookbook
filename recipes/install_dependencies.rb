@@ -47,9 +47,7 @@ include_recipe 'elasticsearch'
 include_recipe 'nginx'
 nginx_site 'atom' do
   template 'atom.nginx.erb'
-end
-service 'nginx' do
-  action :reload
+  notifies :reload, 'service[nginx]', :delayed
 end
 
 # MySQL, PHP
