@@ -35,16 +35,10 @@ if node['atom']['install_optional_packages']
   package node['atom']['optional_packages']
 end
 
-# Node.js
-include_recipe 'nodejs'
+# Install less and gulp to precomile css
 nodejs_npm 'less gulp'
 
-# Java & Elasticsearch
-include_recipe 'java'
-include_recipe 'elasticsearch'
-
-# Nginx
-include_recipe 'nginx'
+# Nginx configuration for AtoM
 nginx_site 'atom' do
   template 'atom.nginx.erb'
   notifies :reload, 'service[nginx]', :delayed
