@@ -8,38 +8,38 @@
 #
 
 # Create and start MySQL instance for AtoM
-mysql_service "#{node['atom']['database_name']}" do
-  bind_address '127.0.0.1'
-  version "#{node['atom']['mysql_version']}"
-  initial_root_password "#{node['atom']['mysql_password']}"
-  action [:create, :start]
-end
+# mysql_service "#{node['atom']['database_name']}" do
+#   bind_address '127.0.0.1'
+#   version "#{node['atom']['mysql_version']}"
+#   initial_root_password "#{node['atom']['mysql_password']}"
+#   action [:create, :start]
+# end
 
 # Install mysql2_chef_gem to set up databases
 mysql2_chef_gem 'default'
 
 # Set up AtoM database
-mysql_database "#{node['atom']['database_name']}" do
+mysql_database node['atom']['database_name'] do
   connection(
-    host: '127.0.0.1',
+    host:     node['mysql']['bind_address'],
     username: 'root',
-    socket: "/var/run/mysql-#{node['atom']['database_name']}/mysqld.sock",
-    password: node['atom']['mysql_password']
+    socket:   "/var/run/mysql-#{node['mysql']['service_name']}/mysqld.sock",
+    password: node['mysql']['initial_root_password']
   )
-  encoding 'utf8'
+  encoding  'utf8'
   collation 'utf8_unicode_ci'
 end
 
 # Create database user 'atom' and grant all priveleges
 mysql_connection_info = {
-  host: '127.0.0.1',
+  host:     node['mysql']['bind_address'],
   username: 'root',
-  password: node['atom']['mysql_password']
+  password: node['mysql']['initial_root_password']
 }
 
-mysql_database_user "#{node['atom']['database_user']}" do
-  connection mysql_connection_info
-  password "#{node['atom']['database_user_password']}"
-  database_name "#{node['atom']['database_name']}"
+mysql_database_user node['atom']['database_user'] do
+  connection      mysql_connection_info
+  password        node['atom']['database_user_password']
+  database_name   node['atom']['database_name']
   action :grant
 end
