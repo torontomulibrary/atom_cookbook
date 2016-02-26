@@ -36,6 +36,7 @@ mysql_connection_info = {
   username: 'root',
   password: node['atom']['mysql_password']
 }
+
 mysql_database_user "#{node['atom']['database_user']}" do
   connection mysql_connection_info
   password "#{node['atom']['database_user_password']}"

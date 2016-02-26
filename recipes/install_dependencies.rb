@@ -44,7 +44,7 @@ include_recipe 'java'
 include_recipe 'elasticsearch'
 
 # Nginx
-include_recipe 'nginx'
+# include_recipe 'nginx'
 nginx_site 'atom' do
   template 'atom.nginx.erb'
   notifies :reload, 'service[nginx]', :delayed
