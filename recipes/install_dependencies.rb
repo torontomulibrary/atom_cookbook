@@ -39,12 +39,7 @@ end
 include_recipe 'nodejs'
 nodejs_npm 'less gulp'
 
-# Java & Elasticsearch
-include_recipe 'java'
-include_recipe 'elasticsearch'
-
 # Nginx
-# include_recipe 'nginx'
 nginx_site 'atom' do
   template 'atom.nginx.erb'
   notifies :reload, 'service[nginx]', :delayed

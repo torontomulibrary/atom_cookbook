@@ -16,10 +16,6 @@ depends 'mysql', '~> 6.1.2'
 depends 'database', '~> 4.0.9'
 depends 'mysql2_chef_gem', '~> 1.0.2'
 
-# Elasticsearch requires Java
-depends 'java', '~> 1.39.0'
-depends 'elasticsearch', '~> 0.3.13'
-
 # Nginx
 depends 'nginx', '~> 2.7.6'
 
