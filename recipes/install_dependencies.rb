@@ -8,7 +8,7 @@
 #
 
 # Enable extended repositories
-include_recipe 'yum-epel'
+# include_recipe 'yum-epel'
 
 # Install package dependencies
 package %w(curl git gearmand)
