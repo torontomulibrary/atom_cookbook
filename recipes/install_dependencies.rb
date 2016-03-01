@@ -35,6 +35,17 @@
 # Install less and gulp to precomile css
 # nodejs_npm 'less gulp'
 
+service 'php-fpm' do
+  service_name 'php-fpm'
+  supports start: true, stop: true, restart: true, reload: true
+end
+
+
+template "#{node['php']['fpm_pooldir']}/atom.conf" do
+  source 'atom.php-fpm.erb'
+  notifies :restart, 'service[php-fpm]'
+end
+
 # Nginx configuration for AtoM
 nginx_site 'atom' do
   template 'atom.nginx.erb'
@@ -44,14 +55,9 @@ end
 # MySQL
 include_recipe 'atom::configure_mysql'
 
-# PHP
-template '/etc/php.ini' do
-  source 'php.ini.erb'
-end
-
-template '/etc/php-fpm.d/atom.conf' do
-  source 'atom.php-fpm.erb'
-end
-
+# # PHP
+# template '/etc/php.ini' do
+#   source 'php.ini.erb'
+# end
 
 # include_recipe 'atom::configure_php'
