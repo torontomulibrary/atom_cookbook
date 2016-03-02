@@ -68,4 +68,4 @@ env[PATH] = /usr/local/bin:/usr/bin:/bin
 
 php_admin_value[date.timezone] = "America/Toronto"
 ; this is where our mysql socket lives
-php_value[pdo_mysql.default_socket] = /var/run/mysql-default/mysqld.sock
+php_value[pdo_mysql.default_socket] = /var/run/mysql-<%= node['mysql']['service_name'] %>/mysqld.sock
