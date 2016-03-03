@@ -10,11 +10,6 @@
 # Install AtoM Dependencies
 include_recipe 'atom::install_dependencies'
 
-# Create directory for AtoM
-# directory "#{node['atom']['install_dir']}" do
-#   recursive true
-# end
-
 # Clone down AtoM into install dir
 git "#{node['atom']['install_dir']}" do
   repository node['atom']['git_repo']
@@ -30,17 +25,24 @@ end
 # Create app.yml.erb from template
 template "#{node['atom']['install_dir']}/config/app.yml" do
   source 'app.yml.erb'
+  group node['nginx']['user']
+  owner node['nginx']['user']
 end
 
 # Create factories.yml.erb from template
 template "#{node['atom']['install_dir']}/config/factories.yml" do
   source 'factories.yml.erb'
+  group node['nginx']['user']
+  owner node['nginx']['user']
 end
 
 # Create uploads folder
-directory "#{node['atom']['install_dir']}/uploads"
+directory "#{node['atom']['install_dir']}/uploads" do 
+  group node['nginx']['user']
+  owner node['nginx']['user']
+end
 
 # Change owner to nginx:nginx
-execute 'chown-nginx' do
-  command "chown -R nginx:nginx #{node['atom']['install_dir']}"
-end
+# execute 'chown-nginx' do
+#   command "chown -R nginx:nginx #{node['atom']['install_dir']}"
+# end
