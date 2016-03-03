@@ -21,3 +21,6 @@ depends 'nginx', '~> 2.7.6'
 
 # Node.js
 depends 'nodejs', '~> 2.4.4'
+
+# php?
+depends 'php', '~> 1.8.0'

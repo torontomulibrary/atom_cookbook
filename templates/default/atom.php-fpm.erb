@@ -6,9 +6,9 @@ group = nginx
 
 ; Use UNIX sockets if Nginx and PHP-FPM are running in the same machine
 listen = /var/run/php-fpm.atom.sock
-listen.owner = nginx
-listen.group = nginx
-listen.mode = 0600
+; listen.owner = nginx
+; listen.group = nginx
+; listen.mode = 0600
 
 ; The following directives should be tweaked based in your hardware resources
 ; pm = dynamic
@@ -50,13 +50,13 @@ php_admin_value[apc.stat] = 0
 ; Zend OPcache
 ; Only in Ubuntu 14.04 (PHP 5.5).
 ; Don't use this in Ubuntu 12.04, it won't work.
-php_admin_value[opcache.enable] = 1
-php_admin_value[opcache.enable_cli] = 0
-php_admin_value[opcache.memory_consumption] = 192
-php_admin_value[opcache.interned_strings_buffer] = 16
-php_admin_value[opcache.max_accelerated_files] = 4000
-php_admin_value[opcache.validate_timestamps] = 0
-php_admin_value[opcache.fast_shutdown] = 1
+; php_admin_value[opcache.enable] = 1
+; php_admin_value[opcache.enable_cli] = 0
+; php_admin_value[opcache.memory_consumption] = 192
+; php_admin_value[opcache.interned_strings_buffer] = 16
+; php_admin_value[opcache.max_accelerated_files] = 4000
+; php_admin_value[opcache.validate_timestamps] = 0
+; php_admin_value[opcache.fast_shutdown] = 1
 
 ; This is a good place to define some environment variables, e.g. use
 ; ATOM_DEBUG_IP to define a list of IP addresses with full access to the
@@ -66,5 +66,6 @@ env[ATOM_DEBUG_IP] = "10.10.10.10,127.0.0.1,10.0.2.2"
 env[ATOM_READ_ONLY] = "off"
 env[PATH] = /usr/local/bin:/usr/bin:/bin
 
+php_admin_value[date.timezone] = "America/Toronto"
 ; this is where our mysql socket lives
-php_value[pdo_mysql.default_socket] = /var/run/mysql-atom/mysqld.sock
+php_value[pdo_mysql.default_socket] = /var/run/mysql-<%= node['mysql']['service_name'] %>/mysqld.sock

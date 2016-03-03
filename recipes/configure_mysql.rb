@@ -7,14 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# Create and start MySQL instance for AtoM
-# mysql_service "#{node['atom']['database_name']}" do
-#   bind_address '127.0.0.1'
-#   version "#{node['atom']['mysql_version']}"
-#   initial_root_password "#{node['atom']['mysql_password']}"
-#   action [:create, :start]
-# end
-
 # Install mysql2_chef_gem to set up databases
 mysql2_chef_gem 'default'
 
