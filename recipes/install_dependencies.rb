@@ -15,7 +15,12 @@ end
 # Nginx configuration for AtoM
 nginx_site 'atom' do
   template 'atom.nginx.erb'
-  notifies :reload, 'service[nginx]'
+end
+
+# Force nginx to reload, it seems like nginx_site provider 
+# does not do it properly
+service "nginx" do
+  action :reload
 end
 
 # MySQL
