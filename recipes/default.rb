@@ -19,7 +19,7 @@ end
 # Compile AtoM less
 execute 'compile-atom-css' do
   cwd "#{node['atom']['install_dir']}/plugins/arDominionPlugin"
-  command 'npm install && gulp'
+  command "npm install && gulp && chown -R nginx:nginx #{node['atom']['install_dir']}"
 end
 
 # Create app.yml.erb from template
