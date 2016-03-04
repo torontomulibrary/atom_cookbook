@@ -3,7 +3,7 @@ default['atom']['database_user'] = 'atom'
 default['atom']['database_user_password'] = 'atom'
 
 default['atom']['server_name'] = 'localhost'
-default['atom']['install_dir'] = '/var/www/html/atom'
+default['atom']['install_dir'] = "#{node['nginx']['default_root']}/atom"
 
 default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
 default['atom']['git_revision'] = 'stable/2.2.x'
