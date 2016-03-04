@@ -41,8 +41,3 @@ directory "#{node['atom']['install_dir']}/uploads" do
   group node['nginx']['user']
   owner node['nginx']['user']
 end
-
-# Change owner to nginx:nginx
-# execute 'chown-nginx' do
-#   command "chown -R nginx:nginx #{node['atom']['install_dir']}"
-# end
