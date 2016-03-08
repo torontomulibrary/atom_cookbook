@@ -16,7 +16,6 @@ default['atom']['php_timezone'] = 'America/Toronto'
 default['atom']['config']['factories']['user_timeout'] = 1800
 
 # Don't change anything below unless you really know what you are doing!
-
 # Elasticsearch requires Java
 default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'
