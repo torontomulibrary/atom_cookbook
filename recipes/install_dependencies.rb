@@ -17,9 +17,9 @@ nginx_site 'atom' do
   template 'atom.nginx.erb'
 end
 
-# Force nginx to reload, it seems like nginx_site provider 
+# Force nginx to reload, it seems like nginx_site provider
 # does not do it properly
-service "nginx" do
+service 'nginx' do
   action :reload
 end
 

@@ -11,7 +11,7 @@
 include_recipe 'atom::install_dependencies'
 
 # Clone down AtoM into install dir
-git "#{node['atom']['install_dir']}" do
+git node['atom']['install_dir'] do
   repository node['atom']['git_repo']
   revision node['atom']['git_revision']
 end
@@ -37,7 +37,7 @@ template "#{node['atom']['install_dir']}/config/factories.yml" do
 end
 
 # Create uploads folder
-directory "#{node['atom']['install_dir']}/uploads" do 
+directory "#{node['atom']['install_dir']}/uploads" do
   group node['nginx']['user']
   owner node['nginx']['user']
 end
