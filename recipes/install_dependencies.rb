@@ -22,6 +22,3 @@ end
 service 'nginx' do
   action :reload
 end
-
-# MySQL
-include_recipe 'atom::configure_mysql'
