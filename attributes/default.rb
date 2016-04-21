@@ -1,4 +1,3 @@
-default['atom']['server_name'] = 'localhost'
 default['atom']['install_dir'] = "#{node['nginx']['default_root']}/atom"
 
 default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
