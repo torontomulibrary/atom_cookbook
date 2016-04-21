@@ -13,12 +13,12 @@ template "#{node['php']['fpm_pooldir']}/atom.conf" do
 end
 
 # Nginx configuration for AtoM
-nginx_site 'atom' do
-  template 'atom.nginx.erb'
-end
+# nginx_site 'atom' do
+#   template 'atom.nginx.erb'
+# end
 
 # Force nginx to reload, it seems like nginx_site provider
 # does not do it properly
-service 'nginx' do
-  action :reload
-end
+# service 'nginx' do
+#   action :reload
+# end
