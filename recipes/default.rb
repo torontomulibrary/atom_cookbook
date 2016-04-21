@@ -7,9 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-# Install AtoM Dependencies
-include_recipe 'atom::install_dependencies'
-
 # Clone down AtoM into install dir
 git node['atom']['install_dir'] do
   repository node['atom']['git_repo']
