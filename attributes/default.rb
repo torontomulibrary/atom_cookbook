@@ -1,7 +1,3 @@
-default['atom']['database_name'] = 'atom'
-default['atom']['database_user'] = 'atom'
-default['atom']['database_user_password'] = 'atom'
-
 default['atom']['server_name'] = 'localhost'
 default['atom']['install_dir'] = "#{node['nginx']['default_root']}/atom"
 
