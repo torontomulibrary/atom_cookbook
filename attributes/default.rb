@@ -2,7 +2,6 @@ default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
 default['atom']['git_revision'] = 'stable/2.2.x'
 
 default['atom']['google_analytics_api_key'] = nil
-default['atom']['php_timezone'] = 'America/Toronto'
 
 # config/factories.yml
 default['atom']['config']['factories']['user_timeout'] = 1800
