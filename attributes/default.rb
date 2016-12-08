@@ -10,6 +10,7 @@ default['atom']['config']['factories']['user_timeout'] = 1800
 # AtoM asks for Oracle Java 8 or newer
 
 default['atom']['install_dir'] = "#{node['nginx']['default_root']}/atom"
+default['atom']['log_dir'] = "#{node['nginx']['log_dir']}/atom/"
 
 default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'
