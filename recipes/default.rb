@@ -7,6 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# Create atom log directory
+directory node['atom']['log_dir']
+
 # Clone down AtoM into install dir
 git node['atom']['install_dir'] do
   repository node['atom']['git_repo']
