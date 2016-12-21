@@ -1,5 +1,5 @@
 default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
-default['atom']['git_revision'] = 'stable/2.2.x'
+default['atom']['git_revision'] = 'stable/2.3.x'
 
 default['atom']['google_analytics_api_key'] = nil
 
@@ -7,11 +7,10 @@ default['atom']['google_analytics_api_key'] = nil
 default['atom']['config']['factories']['user_timeout'] = 1800
 
 # Don't change anything below unless you really know what you are doing!
-# AtoM asks for Oracle Java 8 or newer
-
 default['atom']['install_dir'] = "#{node['nginx']['default_root']}/atom"
 default['atom']['log_dir'] = "#{node['nginx']['log_dir']}/atom/"
 
+# AtoM asks for Oracle Java 8 or newer
 default['java']['install_flavor'] = 'oracle'
 default['java']['jdk_version'] = '8'
 default['java']['oracle']['accept_oracle_download_terms'] = true
