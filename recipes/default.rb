@@ -41,3 +41,11 @@ directory "#{node['atom']['install_dir']}/uploads" do
   group node['nginx']['user']
   owner node['nginx']['user']
 end
+
+# Clone plugins from git
+node['atom']['plugins'].each do |plugin|
+  execute "clone plugin from #{plugin}" do
+    cwd "#{node['atom']['install_dir']}/plugins/"
+    command "git clone #{plugin}"
+  end
+end
