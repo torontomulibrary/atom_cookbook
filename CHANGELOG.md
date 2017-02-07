@@ -1,6 +1,9 @@
 # atom CHANGELOG
 This file is used to list changes made in each version of the atom cookbook.
 
+## 0.4.0
+- Feature: ability to specify plugins to clone from git
+
 ## 0.3.2
 - Update the README because it hasn't been updated in forever.
 
