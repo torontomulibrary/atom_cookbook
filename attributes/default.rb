@@ -1,6 +1,8 @@
 default['atom']['git_repo'] = 'git://github.com/artefactual/atom.git'
 default['atom']['git_revision'] = 'stable/2.3.x'
 
+default['atom']['plugins'] = []
+
 default['atom']['google_analytics_api_key'] = nil
 
 # config/factories.yml
