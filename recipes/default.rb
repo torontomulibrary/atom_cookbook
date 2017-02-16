@@ -44,8 +44,7 @@ end
 
 # Clone plugins from git
 node['atom']['plugins'].each do |plugin|
-  execute "clone plugin from #{plugin}" do
-    cwd "#{node['atom']['install_dir']}/plugins/"
-    command "git clone #{plugin}"
+  git "#{node['atom']['install_dir']}/plugins/#{plugin['name']}" do
+    repository plugin['git_repo']
   end
 end

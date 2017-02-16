@@ -1,6 +1,9 @@
 # atom CHANGELOG
 This file is used to list changes made in each version of the atom cookbook.
 
+## 0.4.1
+- Fix: use git resource to sync instead of execute to prevent chef from crashing when running converge
+
 ## 0.4.0
 - Feature: ability to specify plugins to clone from git
 
