@@ -41,6 +41,12 @@ end
 
 # Clone plugins from git
 node['atom']['plugins'].each do |plugin|
+  directory "#{node['atom']['install_dir']}/plugins/#{plugin['name']}" do
+    action :delete
+    recursive true
+    only_if { plugin['override_core'] }
+  end
+
   git "#{node['atom']['install_dir']}/plugins/#{plugin['name']}" do
     repository plugin['git_repo']
   end
