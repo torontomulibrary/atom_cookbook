@@ -49,5 +49,7 @@ node['atom']['plugins'].each do |plugin|
 
   git "#{node['atom']['install_dir']}/plugins/#{plugin['name']}" do
     repository plugin['git_repo']
+    user node['nginx']['user']
+    group node['nginx']['user']
   end
 end
