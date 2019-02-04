@@ -71,7 +71,7 @@ systemd_unit 'atom-worker.service' do
       WorkingDirectory: node['atom']['install_dir'],
       ExecStart: '/usr/bin/php -d memory_limit=-1 -d error_reporting="E_ALL" symfony jobs:worker',
       ExecStop: '/bin/kill -s TERM $MAINPID',
-      Restart: 'on-failure',
+      Restart: 'always',
       RestartSec: '1',
       StartLimitBurst: '5',
       StartLimitInterval: '0',

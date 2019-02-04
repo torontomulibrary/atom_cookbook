@@ -4,7 +4,7 @@ maintainer_email 'patrick@makestuffdostuff.com'
 license          'All rights reserved'
 description      'Installs/Configures atom'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.6.0'
+version          '0.6.1'
 
 depends 'chef_nginx', '~> 6.2.0'
 depends 'java', '~> 3.1.2'
