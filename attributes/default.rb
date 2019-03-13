@@ -12,6 +12,8 @@ default['atom']['config']['factories']['user_timeout'] = 1800
 default['atom']['install_dir'] = "#{node['nginx']['default_root']}/atom"
 default['atom']['log_dir'] = "#{node['nginx']['log_dir']}/atom/"
 
+default['atom']['php']['php_binary'] = node['lits_vm']['php']['php_binary'] || '/usr/bin/php'
+
 # AtoM asks for Oracle Java 8 or newer
 # Oracle has been known to change the behavior of its download site frequently. 
 # It is recommended you store the archives on an artifact server or s3 bucket. 

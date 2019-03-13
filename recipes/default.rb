@@ -69,7 +69,7 @@ systemd_unit 'atom-worker.service' do
       User: node['nginx']['user'],
       Group: node['nginx']['group'],
       WorkingDirectory: node['atom']['install_dir'],
-      ExecStart: '/usr/bin/php -d memory_limit=-1 -d error_reporting="E_ALL" symfony jobs:worker',
+      ExecStart: "#{node['atom']['php']['php_binary']} -d memory_limit=-1 -d error_reporting=\"E_ALL\" symfony jobs:worker",
       ExecStop: '/bin/kill -s TERM $MAINPID',
       Restart: 'always',
       RestartSec: '1',
