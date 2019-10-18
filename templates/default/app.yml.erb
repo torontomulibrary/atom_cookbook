@@ -20,13 +20,28 @@ all:
   # by and environment variable called "ATOM_READ_ONLY"
   read_only: false
 
-  # Used in the repo template
-  # google_maps_api_key: ...
-
-  <% if node['atom']['google_analytics_api_key'] %>
-  # Google Analitycs
+  # Google Analitycs:
+  # Set a GA property API key to track page view hits.
+  # E.g.: UA-1234567-89
   google_analytics_api_key: <%= node['atom']['google_analytics_api_key'] %>
-  <% end %>
-  
+  # Set a GA custom dimension index numver (from the same property)
+  # to track the repository name as a dimension in page view hits
+  # of IOs, actors and repos index pages.
+  # E.g.: 1
+  google_analytics_institutions_dimension_index:
+
   # htmlpurifier is used in static pages, disabled by default
   htmlpurifier_enabled: false
+
+  # Specify a CSV Transform script that can be automatically applied from
+  # the CSV Import Page in AtoM
+  # csv_transform_script_name: /full/path/to/transformscript
+
+  # The workers_key is concatenated alongside the project folder absolute path
+  # to generate an unique hash that is used to associate the worker(s) abilities
+  # with the corresponding AtoM instance. The workers_key will normally be empty,
+  # unless multiple AtoM instances running on the same path are connected to the
+  # same Gearman server, in which case, each instance's workers_key must be set
+  # to a different string value to make sure the proper workers take the job for
+  # their related instance.
+  workers_key:

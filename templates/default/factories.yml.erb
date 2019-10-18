@@ -16,7 +16,7 @@ test:
       session_path: %SF_TEST_CACHE_DIR%/sessions
 
   response:
-    class: sfWebResponse
+    class: QubitWebResponse
     param:
       send_http_headers: false
 
@@ -58,9 +58,13 @@ all:
           lifetime: 86400
           prefix: %SF_APP_DIR%/template
 
+  response:
+    class: QubitWebResponse
+
   routing:
     class: QubitPatternRouting
     param:
+      logging: false
       generate_shortest_url:            true
       extra_parameters_as_query_string: true
       # class: sfAPCCache
@@ -96,3 +100,4 @@ all:
           param:
             level: warning
             file: %SF_LOG_DIR%/%SF_APP%_%SF_ENVIRONMENT%.log
+
