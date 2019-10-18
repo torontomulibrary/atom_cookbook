@@ -22,21 +22,21 @@ end
 # Create app.yml.erb from template
 template "#{node['atom']['install_dir']}/config/app.yml" do
   source 'app.yml.erb'
-  owner node['nginx']['user']
-  group node['nginx']['group']
+  owner 'nginx'
+  group 'nginx'
 end
 
 # Create factories.yml.erb from template
 template "#{node['atom']['install_dir']}/config/factories.yml" do
   source 'factories.yml.erb'
-  owner node['nginx']['user']
-  group node['nginx']['group']
+  owner 'nginx'
+  group 'nginx'
 end
 
 # Create uploads folder
 directory "#{node['atom']['install_dir']}/uploads" do
-  owner node['nginx']['user']
-  group node['nginx']['group']
+  owner 'nginx'
+  group 'nginx'
 end
 
 # Clone plugins from git
@@ -49,8 +49,9 @@ node['atom']['plugins'].each do |plugin|
 
   git "#{node['atom']['install_dir']}/plugins/#{plugin['name']}" do
     repository plugin['git_repo']
-    user node['nginx']['user']
-    group node['nginx']['group']
+    revision plugin['git_revision'] || 'master'
+    user 'nginx'
+    group 'nginx'
   end
 end
 
@@ -66,8 +67,8 @@ systemd_unit 'atom-worker.service' do
     },
     Service: {
       Type: 'simple',
-      User: node['nginx']['user'],
-      Group: node['nginx']['group'],
+      User: 'nginx',
+      Group: 'nginx',
       WorkingDirectory: node['atom']['install_dir'],
       ExecStart: "#{node['atom']['php']['php_binary']} -d memory_limit=-1 -d error_reporting=\"E_ALL\" symfony jobs:worker",
       ExecStop: '/bin/kill -s TERM $MAINPID',
