@@ -53,6 +53,13 @@ node['atom']['plugins'].each do |plugin|
     user 'nginx'
     group 'nginx'
   end
+
+  # Run gulp to compile less
+  execute 'compile theme' do
+    cwd "#{node['atom']['install_dir']}/plugins/#{plugin['name']}"
+    command "npm install && gulp && chown -R nginx:nginx #{node['atom']['install_dir']}"
+    only_if { plugin['gulp'] }
+  end
 end
 
 # Install, enable, and start the atom async worker service
