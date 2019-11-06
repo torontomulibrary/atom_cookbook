@@ -1,11 +1,8 @@
 #
-# Cookbook Name:: atom
+# Cookbook:: atom
 # Recipe:: default
 #
-# Copyright 2015, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
+# Copyright:: 2015, Ryerson University Library
 
 # Clone down AtoM into install dir
 git node['atom']['install_dir'] do
@@ -55,7 +52,7 @@ node['atom']['plugins'].each do |plugin|
   end
 
   # Run gulp to compile less
-  execute 'compile theme' do
+  execute "compile theme #{plugin['name']}" do
     cwd "#{node['atom']['install_dir']}/plugins/#{plugin['name']}"
     command "npm install && gulp && chown -R nginx:nginx #{node['atom']['install_dir']}"
     only_if { plugin['gulp'] }
@@ -64,7 +61,7 @@ end
 
 # Install, enable, and start the atom async worker service
 systemd_unit 'atom-worker.service' do
-  content({
+  content(
     Unit: {
       Description: 'AtoM Asynchronous Gearman Worker',
       After: 'gearmand.service',
@@ -84,6 +81,6 @@ systemd_unit 'atom-worker.service' do
       StartLimitBurst: '5',
       StartLimitInterval: '0',
     }
-  })
+  )
   action [ :create, :enable, :start ]
 end
