@@ -23,7 +23,7 @@ action :backup do
 end
 
 action :restore do
-  raise "Could not find file at #{new_resource.database_file}!" if !::File.exist?(new_resource.database_file)
+  raise "Could not find file at #{new_resource.database_file}!" unless ::File.exist?(new_resource.database_file)
 
   execute "mysql restore #{new_resource.database_name} database" do
     command "mysql -S #{new_resource.mysql_socket} -u #{new_resource.mysql_user} -p#{new_resource.mysql_password} #{new_resource.database_name} < #{new_resource.database_file}"
