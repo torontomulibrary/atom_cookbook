@@ -8,6 +8,8 @@ default['atom']['google_analytics_api_key'] = nil
 # config/factories.yml
 default['atom']['config']['factories']['user_timeout'] = 1800
 
+default['atom']['add_languages'] = []
+
 # Don't change anything below unless you really know what you are doing!
 default['atom']['install_dir'] = '/var/www/nginx-default/atom'
 

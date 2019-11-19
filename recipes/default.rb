@@ -59,6 +59,20 @@ node['atom']['plugins'].each do |plugin|
   end
 end
 
+# Include the script if we are adding languages to the information object
+template "#{node['atom']['install_dir']}/vendor/symfony/lib/i18n/data/add_language.php" do
+  source 'add_language.php'
+  owner 'nginx'
+  group 'nginx'
+  only_if { node['atom']['add_languages'].count > 0 }
+end
+
+node['atom']['add_languages'].each do |language_code, language|
+  atom_informationobject_language language_code do
+    language_name language
+  end
+end
+
 # Install, enable, and start the atom async worker service
 systemd_unit 'atom-worker.service' do
   content(
