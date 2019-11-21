@@ -21,9 +21,9 @@ end
 
 action_class do
   def build_add_language_command
-    command = "php add_language.php en.dat Languages "
+    command = 'php add_language.php en.dat Languages '
     command << "#{new_resource.language_code} "
-    command << "#{new_resource.language_name}"
+    command << new_resource.language_name
     command
   end
 end
